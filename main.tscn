@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://br13m422ttrjq"]
+
+[ext_resource type="Script" uid="uid://buc7il3i48wpl" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://i22au1gmy7qf" path="res://art/BG.png" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://blurees7ct2su" path="res://grid_mgr.tscn" id="2_c0bet"]
+[ext_resource type="PackedScene" uid="uid://kurw1rmp2kgc" path="res://ui.tscn" id="3_7wqgc"]
+[ext_resource type="Script" uid="uid://bcsqetdghgqwu" path="res://sub_viewport.gd" id="4_5vw27"]
+[ext_resource type="AudioStream" uid="uid://c3bophx1qxk73" path="res://sound/winter_fun.wav" id="6_272bh"]
+[ext_resource type="AudioStream" uid="uid://bghxespuehftb" path="res://sound/elimilate.mp3" id="7_272bh"]
+
+[sub_resource type="GDScript" id="GDScript_272bh"]
+script/source = "extends SubViewportContainer
+
+func _ready() -> void:
+	pass
+	#
+#func _gui_input(event):
+	#$SubViewport.push_input(event)
+	##if event is InputEventMouseButton:
+		##print(\"Container get _gui_input\")
+#
+#func _unhandled_gui_input( event ):
+	##print(\"Grid Container:_unhandled_gui_input\")
+	##if event is InputEventMouseButton:
+		##print(\"Container get _unhandled_gui_input\")
+	#$SubViewport.push_input(event)
+	#
+#func _propagate_input_event(event: InputEvent) -> bool:
+	##print(\"_propagate_input_event\")
+	#return true
+##
+#func _input( event ):
+	##if event is InputEventMouseButton:
+		##print(\"Container get _input\")
+		##if not is_inside_tree():
+			##print(\"not inside tree\")
+		##if not get_viewport():
+			##print(\"not get_view port\")
+		##if get_viewport().is_input_handled():
+			##print(\"is_input_handled\")
+		##if Engine.is_editor_hint():
+			##print(\"Running in editor mode\")
+	#if event is InputEventMouse:
+		#var transformed_event = convert_event( event )
+		#$SubViewport.push_input(transformed_event)
+	#else:
+		##print(\"Grid Container: input\")
+		#$SubViewport.push_input(event)
+	
+#func convert_event( event ) -> InputEvent:
+	#var sub_viewport = $SubViewport  # 获取子视口
+	#var transformed_event=event.duplicate()
+	#transformed_event.position = event.position - global_position
+#
+	##print(\"Converted position:\", transformed_event.position)
+	#return transformed_event
+"
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_1bvp3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.352941, 0.701961, 0.682353, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1730.0
+offset_top = -399.0
+offset_right = 3136.0
+offset_bottom = 2601.0
+texture = ExtResource("1_h2yge")
+
+[node name="GridContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 40.0
+offset_top = 360.0
+offset_right = 680.0
+offset_bottom = 1000.0
+script = SubResource("GDScript_272bh")
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 640)
+render_target_update_mode = 4
+script = ExtResource("4_5vw27")
+
+[node name="GridMgr" parent="GridContainer/SubViewport" instance=ExtResource("2_c0bet")]
+position = Vector2(0, 0)
+
+[node name="UI" parent="." instance=ExtResource("3_7wqgc")]
+layout_mode = 1
+mouse_filter = 2
+
+[node name="bg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_272bh")
+volume_db = -6.0
+autoplay = true
+
+[node name="remove_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_272bh")
+max_polyphony = 7
+
+[connection signal="end_game" from="GridContainer/SubViewport/GridMgr" to="UI" method="_on_grid_mgr_end_game"]
+[connection signal="remove_block" from="GridContainer/SubViewport/GridMgr" to="." method="_on_grid_mgr_remove_block"]
+[connection signal="update_score" from="GridContainer/SubViewport/GridMgr" to="UI" method="_on_grid_mgr_update_score"]
+[connection signal="update_step" from="GridContainer/SubViewport/GridMgr" to="UI" method="_on_grid_mgr_update_step"]

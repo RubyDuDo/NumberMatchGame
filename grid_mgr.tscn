@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://blurees7ct2su"]
+
+[ext_resource type="Script" uid="uid://cqyq82haaattd" path="res://grid_mgr.gd" id="1_mhn75"]
+[ext_resource type="PackedScene" uid="uid://7o8762kvbe8f" path="res://block.tscn" id="2_ilpft"]
+
+[node name="GridMgr" type="Node2D"]
+position = Vector2(118, 542)
+script = ExtResource("1_mhn75")
+
+[node name="fly_block" parent="." instance=ExtResource("2_ilpft")]

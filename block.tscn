@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://7o8762kvbe8f"]
+
+[ext_resource type="Script" uid="uid://crlscvp2md3tn" path="res://block.gd" id="1_3prex"]
+[ext_resource type="Texture2D" uid="uid://bpx7x4wgtcusf" path="res://art/paper.png" id="1_mk58r"]
+[ext_resource type="FontFile" uid="uid://385pshdiw468" path="res://fonts/Mrs Beasley.ttf" id="3_mk58r"]
+[ext_resource type="FontFile" uid="uid://deao5tstw4854" path="res://fonts/Funtype.ttf" id="4_mk58r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ytci"]
+font = ExtResource("4_mk58r")
+font_size = 100
+font_color = Color(0, 0.0392157, 0.0470588, 1)
+
+[node name="block" type="Sprite2D"]
+position = Vector2(110, 51)
+texture = ExtResource("1_mk58r")
+script = ExtResource("1_3prex")
+block_size = 128
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.755
+offset_top = -131.627
+offset_right = -128.755
+offset_bottom = -131.627
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.02139
+pivot_offset = Vector2(132.764, 129.73)
+theme_override_fonts/font = ExtResource("3_mk58r")
+theme_override_font_sizes/font_size = 20
+text = "2"
+label_settings = SubResource("LabelSettings_7ytci")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,263 @@
+[gd_scene load_steps=27 format=3 uid="uid://kurw1rmp2kgc"]
+
+[ext_resource type="FontFile" uid="uid://dv80uqsnhg54j" path="res://fonts/Xolonium-Regular.ttf" id="1_rietj"]
+[ext_resource type="Script" uid="uid://i6i273fpq0fu" path="res://ui.gd" id="2_8qbjn"]
+[ext_resource type="Script" uid="uid://dfmgf4ypxpsej" path="res://restart.gd" id="2_ds4us"]
+[ext_resource type="Texture2D" uid="uid://bwh0mdvq27de5" path="res://art/Replay (2).png" id="3_ibotj"]
+[ext_resource type="Texture2D" uid="uid://cw7shv7ifcuet" path="res://art/Window.png" id="3_n5rqp"]
+[ext_resource type="Texture2D" uid="uid://dbd0vvvqwb42o" path="res://art/Replay (1).png" id="3_nltto"]
+[ext_resource type="FontFile" uid="uid://385pshdiw468" path="res://fonts/Mrs Beasley.ttf" id="4_gs482"]
+[ext_resource type="Texture2D" uid="uid://dinrpcqqksx3i" path="res://art/Trophy (1).png" id="6_y4yjw"]
+[ext_resource type="FontFile" uid="uid://deao5tstw4854" path="res://fonts/Funtype.ttf" id="7_waa4j"]
+[ext_resource type="Texture2D" uid="uid://cn4a3krkp0pks" path="res://art/Help (1).png" id="8_ok7cu"]
+[ext_resource type="Texture2D" uid="uid://bq3a83f8nsg85" path="res://art/Help (2).png" id="9_irxef"]
+[ext_resource type="Texture2D" uid="uid://dyfb2josl8veq" path="res://art/leftstep.png" id="10_irxef"]
+
+[sub_resource type="Theme" id="Theme_dpxxp"]
+default_font = ExtResource("1_rietj")
+default_font_size = 64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nltto"]
+texture = ExtResource("3_nltto")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y4yjw"]
+texture = ExtResource("3_ibotj")
+
+[sub_resource type="Theme" id="Theme_ok7cu"]
+default_font = ExtResource("7_waa4j")
+default_font_size = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e2l4f"]
+texture = ExtResource("8_ok7cu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n5rqp"]
+texture = ExtResource("8_ok7cu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gs482"]
+texture = ExtResource("9_irxef")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cxd00"]
+texture = ExtResource("9_irxef")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_etlur"]
+texture = ExtResource("9_irxef")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rqds"]
+texture = ExtResource("9_irxef")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nvb2n"]
+texture = ExtResource("9_irxef")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_os5c7"]
+texture = ExtResource("9_irxef")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b2p7n"]
+texture = ExtResource("8_ok7cu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vkygq"]
+texture = ExtResource("8_ok7cu")
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = SubResource("Theme_dpxxp")
+script = ExtResource("2_8qbjn")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_top = 110.0
+offset_right = 22.5
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="EndGame" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -388.0
+offset_top = -303.0
+offset_right = 388.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(389, 314)
+texture = ExtResource("3_n5rqp")
+
+[node name="end_info" type="Label" parent="EndGame"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -196.0
+offset_top = 160.0
+offset_right = 196.0
+offset_bottom = 207.0
+grow_horizontal = 2
+pivot_offset = Vector2(815, 258)
+theme_override_colors/font_color = Color(0.760784, 0.380392, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.219608, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_gs482")
+theme_override_font_sizes/font_size = 100
+text = "New record!"
+
+[node name="score_info" type="Label" parent="EndGame"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.5
+offset_top = -71.0
+offset_right = 100.5
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(101.5, 30.2501)
+theme_override_colors/font_color = Color(0.827451, 0.380392, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_gs482")
+theme_override_font_sizes/font_size = 80
+text = "5000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = 200.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(176, -1)
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_nltto")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_nltto")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_y4yjw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_y4yjw")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_y4yjw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_y4yjw")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_y4yjw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y4yjw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_nltto")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nltto")
+script = ExtResource("2_ds4us")
+
+[node name="record" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 87.5)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 245.0
+offset_bottom = 100.0
+
+[node name="icon" type="TextureRect" parent="record"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("6_y4yjw")
+expand_mode = 3
+
+[node name="record_score" type="Label" parent="record"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 3.0
+theme = SubResource("Theme_ok7cu")
+theme_override_font_sizes/font_size = 36
+text = "0"
+vertical_alignment = 1
+
+[node name="Help" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -207.0
+offset_top = 25.0
+offset_right = -120.0
+offset_bottom = 113.0
+grow_horizontal = 0
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_e2l4f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_n5rqp")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_gs482")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_cxd00")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_etlur")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7rqds")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_nvb2n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_os5c7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_b2p7n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vkygq")
+
+[node name="pinky_bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -166.0
+offset_top = 206.0
+offset_right = -38.0
+offset_bottom = 295.0
+grow_horizontal = 0
+rotation = 0.536739
+scale = Vector2(2, 1.8)
+pivot_offset = Vector2(64, 43.6667)
+texture = ExtResource("10_irxef")
+
+[node name="left_step" type="Label" parent="pinky_bg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 25.0
+offset_right = 42.5
+offset_bottom = 15.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_rietj")
+theme_override_font_sizes/font_size = 12
+text = "Steps Left:"
+
+[node name="left_num" type="Label" parent="pinky_bg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.7644
+offset_top = -1.20383
+offset_right = 18.2356
+offset_bottom = 31.7962
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(19.3333, 16.7778)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_waa4j")
+theme_override_font_sizes/font_size = 35
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Restart" to="Restart" method="_on_pressed"]
+[connection signal="pressed" from="Help" to="." method="_on_help_pressed"]
